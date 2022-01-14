@@ -1,7 +1,7 @@
 import Spinner from "@/presentation/components/spinner/spinner";
+import { Logo } from "@/presentation/components/logo/logo";
 import React from "react";
 import Styles from "./login-styles.scss";
-import { Logo } from "./logo";
 
 const Login: React.FC = () => {
   return (
