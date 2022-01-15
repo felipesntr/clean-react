@@ -14,7 +14,10 @@ type StateProps = {
 };
 
 const Login: React.FC = () => {
-  const [state] = useState<StateProps>({ isLoading: false, errorMessage: "" });
+  const [state] = useState<StateProps>({
+    isLoading: false,
+    errorMessage: "",
+  });
   return (
     <div className={Styles.login}>
       <LoginHeader />
@@ -27,7 +30,12 @@ const Login: React.FC = () => {
             name="password"
             placeholder="Digite sua senha"
           />
-          <button type="submit" className={Styles.submit}>
+          <button
+            data-testid="submit"
+            type="submit"
+            disabled
+            className={Styles.submit}
+          >
             Entrar
           </button>
           <span className={Styles.link}>Criar uma conta</span>
