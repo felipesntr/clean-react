@@ -3,13 +3,13 @@ import React, { useContext } from "react";
 import Spinner from "../spinner/spinner";
 import Context from "@/presentation/contexts/form/form-context";
 const FormStatus: React.FC = () => {
-  const { isLoading, errorMessage } = useContext(Context);
+  const { state, errorState } = useContext(Context);
+  const { isLoading } = state;
+  const { main } = errorState;
   return (
     <div data-testid="error-wrap" className={Styles.errorWrap}>
       {isLoading && <Spinner className={Styles.spinner} />}
-      {errorMessage.length > 0 && (
-        <span className={Styles.error}>errorMessage</span>
-      )}
+      {main.length > 0 && <span className={Styles.error}>errorMessage</span>}
     </div>
   );
 };
