@@ -8,17 +8,23 @@ type Props = React.DetailedHTMLProps<
 >;
 
 const Input: React.FC<Props> = (props: Props) => {
-  const { errorState } = useContext(Context);
-  const error = errorState[props.name];
+  const { state, setState } = useContext(Context);
+  const error = state[`${props.name}Error`];
   const getStatus = (): string => {
     return "🔴";
   };
   const getTitle = (): string => {
     return error;
   };
+  const handleChange = (event: any) => {
+    setState({
+      ...state,
+      [event.target.name]: event.target.value,
+    });
+  };
   return (
     <div className={Styles.inputWrap}>
-      <input {...props} />
+      <input onChange={handleChange} data-testid={props.name} {...props} />
       <span
         data-testid={`${props.name}-status`}
         title={getTitle()}
